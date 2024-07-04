@@ -1,5 +1,5 @@
 from qiskit import QuantumCircuit
-from qcc import transpile
+from qcc_frontend import transpile
 
 qc = QuantumCircuit(2)
 
@@ -12,5 +12,5 @@ qir_string = transpile(qc, allow_array_var=True)
 
 with open('qcl_code.ll', 'w') as f:
     f.write(str(qir_string))
-    # print("file",f)
+    print("file",f)
 
