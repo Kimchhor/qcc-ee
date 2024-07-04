@@ -1,0 +1,17 @@
+
+
+int kernel(){
+    qbit q0;
+    qbit q1;
+    int c;
+    int c1;
+    x -> q0;
+    z -> q0;
+    h -> q0;
+    z -> q1;
+    h -> q1;
+    x -> q1;
+    s -> q1;
+    c = measure -> q0;
+    return c;
+}

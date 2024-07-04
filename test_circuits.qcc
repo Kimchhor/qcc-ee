@@ -1,0 +1,252 @@
+/// SWAP Circuits Test-suits 
+/// @brief ==> Expected results: 00
+void kernel_swap_1() {
+
+    qbit q[2];
+    int c[2];
+
+    prez -> q[0];
+    prez -> q[1];
+
+    swap -> q[0], q[1];
+
+    c[0] = measure -> q[0];
+    c[1] = measure -> q[1];
+}
+
+/// @brief ==> Expected results: 01
+void kernel_swap_2() {
+
+    qbit q[2];
+    int c[2];
+
+    prez -> q[0];
+    prez -> q[1];
+
+
+    x -> q[1];
+    swap -> q[0], q[1];
+
+    c[0] = measure -> q[0];
+    c[1] = measure -> q[1];
+}
+
+/// @brief ==> Expected results: 10
+void kernel_swap_3() {
+
+    qbit q[2];
+    int c[2];
+
+    prez -> q[0];
+    prez -> q[1];
+
+    x -> q[0];
+    swap -> q[0], q[1];
+
+    c[0] = measure -> q[0];
+    c[1] = measure -> q[1];
+}
+
+/// @brief ==> Expected results: 11
+void kernel_swap_4() {
+
+    qbit q[2];
+    int c[2];
+
+    prez -> q[0];
+    prez -> q[1];
+
+    x -> q[0];
+    x -> q[1];
+    swap -> q[0], q[1];
+
+    c[0] = measure -> q[0];
+    c[1] = measure -> q[1];
+}
+
+/// @brief ==> Expected results: 00
+void kernel_swap_5() {
+
+    qbit q[2];
+    int c[2];
+
+    prex -> q[0];
+    prex -> q[1];
+
+    swap -> q[0], q[1];
+
+    c[0] = measure -> q[0];
+    c[1] = measure -> q[1];
+}
+
+/// @brief ==> Expected results: 01
+void kernel_swap_6() {
+
+    qbit q[2];
+    int c[2];
+
+    prex -> q[0];
+    prex -> q[1];
+
+    z -> q[1];
+    swap -> q[0], q[1];
+
+    c[0] = measure -> q[0];
+    c[1] = measure -> q[1];
+}
+
+/// @brief ==> Expected results: 10
+void kernel_swap_7() {
+
+    qbit q[2];
+    int c[2];
+
+    prex -> q[0];
+    prex -> q[1];
+
+    z -> q[0];
+    swap -> q[0], q[1];
+
+    c[0] = measure -> q[0];
+    c[1] = measure -> q[1];
+}
+
+/// @brief ==> Expected results: 11
+void kernel_swap_8() {
+
+    qbit q[2];
+    int c[2];
+
+    prex -> q[0];
+    prex -> q[1];
+
+    z -> q[0];
+    z -> q[1];
+    swap -> q[0], q[1];
+
+    c[0] = measure -> q[0];
+    c[1] = measure -> q[1];
+}
+
+
+/// Bell_State Circuits Test-suits 
+/// @brief ==> Expected results: 00 or 11
+void kernel_bell_1() {
+
+    qbit q[2];
+    int c[2];
+
+    prez -> q[0];
+    prez -> q[1];
+
+    h -> q[0];
+    cnot -> q[0], q[1];
+
+    c[0] = measure -> q[0];
+    c[1] = measure -> q[1];
+}
+
+/// @brief ==> Expected results: 00 or 11
+void kernel_bell_2() {
+
+    qbit q[2];
+    int c[2];
+
+    prez -> q[0];
+    prez -> q[1];
+
+    x -> q[0];
+    h -> q[0];
+    cnot -> q[0], q[1];
+
+    c[0] = measure -> q[0];
+    c[1] = measure -> q[1];
+}
+
+/// @brief ==> Expected results: 01 or 10
+void kernel_bell_3() {
+
+    qbit q[2];
+    int c[2];
+
+    prez -> q[0];
+    prez -> q[1];
+
+    h -> q[0];
+    x -> q[1];
+    cnot -> q[0], q[1];
+
+    c[0] = measure -> q[0];
+    c[1] = measure -> q[1];
+}
+
+/// @brief ==> Expected results: 01 or 10
+void kernel_bell_4() {
+
+    qbit q[2];
+    int c[2];
+
+    prez -> q[0];
+    prez -> q[1];
+
+    x -> q[0];
+    x -> q[1];
+    h -> q[0];
+    cnot -> q[0], q[1];
+
+    c[0] = measure -> q[0];
+    c[1] = measure -> q[1];
+}
+
+/// Deutsch Circuits Test-suits 
+/// @brief ==> Expected results: 01 or 11
+void kernel_deutsch() {
+
+    qbit q[2];
+    int c[2];
+
+    prez -> q[0];
+    prez -> q[1];
+
+    x -> q[1];
+    h -> q[0];
+    h -> q[1];
+    cnot -> q[0], q[1];
+    h -> q[0];
+
+    c[0] = measure -> q[0];
+    c[1] = measure -> q[1];
+}
+
+/// Grover Circuits Test-suits 
+/// @brief ==> Expected results: 11
+void kernel_grover() {
+
+    qbit q[2];
+    int c[2];
+
+    prez -> q[0];
+    prez -> q[1];
+
+    h -> q[0];
+    h -> q[1];
+    h -> q[1];
+    cnot -> q[0], q[1];
+
+    h -> q[1];
+    h -> q[0];
+    h -> q[1];
+    x -> q[0];
+    x -> q[1];
+    h -> q[1];
+    cnot -> q[0], q[1];
+
+    h -> q[1];
+    x -> q[0];
+    x -> q[1];
+    h -> q[0];
+    h -> q[1];
+
+    c[0] = measure -> q[0];
+    c[1] = measure -> q[1];
+}

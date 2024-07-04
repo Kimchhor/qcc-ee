@@ -1,0 +1,301 @@
+
+#include <math.h>
+
+void kernel(){
+    qbit q0;
+    qbit q1;
+    qbit q2;
+    int c0;
+    int c1;
+    int c2;
+
+    x -> q0;
+    cx -> q0, q1; 
+    cx -> q1, q0; 
+    cx -> q0, q1; 
+    // ccx -> q0, q1, q2;
+    swap -> q0, q1;
+}
+// // Single gate
+// // void kernel0(){
+// //     qbit q[3];
+// //     int c[3];
+
+// //     for (int i = 0; i < 3; i++)
+// //         prez -> q[i];
+
+// //     x -> q[0];
+// //     h -> q[1];
+// //     // h -> q[2];
+
+// //     c[0] = measure -> q[0];
+// //     c[1] = measure -> q[1];
+// //     // c[2] = measure -> q[2];
+// // }
+
+// // void kernel(){
+// //     qbit q[3];
+// //     int c[3];
+
+// //     prez -> q[0];
+// //     prez -> q[1];
+// //     // prez -> q[2];
+
+// //     // h -> q[0];
+// //     // h -> q[1];
+// //     // x -> q[2];
+// //     cnot -> q[0], q[1];
+// //     c[0] = measure -> q[0];
+// //     c[1] = measure -> q[1];
+// //     // c[2] = measure -> q[2];
+// // }
+
+// // void kernel(){
+// //     qbit q[2];
+// //     int c[2];
+
+
+// //     prez -> q[0];
+// //     prez -> q[1];
+// //     // prez -> q[2];
+// //     x -> q[0];
+// //     x -> q[1];
+
+// //     // h -> q[0];
+// //     // h -> q[1];
+// //     // x -> q[2];
+// //     cnot -> q[0], q[1];
+// //     swap -> q[0], q[1];
+// //     c[0] = measure -> q[0];
+// //     c[1] = measure -> q[1];
+// //     // c[2] = measure -> q[2];
+// // }
+
+
+// // void kernel(){
+
+// //     qbit q[2];
+// //     int c[2];
+
+
+// //     prez -> q[0];
+// //     prez -> q[1];
+
+// //     // prez -> q[2];
+// //     x -> q[0];
+// //     x -> q[1];
+
+// //     c[0] = measure -> q[0];
+// //     c[1] = measure -> q[1];
+// //     // c[2] = measure -> q[2];
+// // }
+
+
+// // int kernel(){
+// //     qbit q0;
+// //     qubit
+    
+// //     double  0.15 = 0.5;
+// //     double 0.98 = 0.314;
+// //     double 0.312 = 0.2;
+
+// //     u -> q0,  0.15;
+// //     u -> q0,  0.15, 0.98;  
+// //     u -> q0,  0.15, 0.98, 0.312;
+
+    
+// //     return measure -> q0;
+// // }
+// // int kernel(){
+// //     qbit q0;
+// //     qbit q1;
+
+// //     cnot -> q0, q1;
+    
+// //     return measure -> q1;
+// // }
+
+// void kernel(){
+
+//     qbit q0;
+//     qbit q1;
+//     qbit q2;
+//     qbit q3;
+//     qbit q4;
+//     qbit q5;
+  
+//     int c0;
+//     int c1;
+//     int c2;
+//     int c3;
+//     int c4;
+//     int c5;
+  
+//     // Single qubit gates
+//     x -> q0;
+//     z -> q1;
+//     y -> q1;
+//     z -> q2;
+//     h -> q1;
+//     t -> q0;
+//     sdag -> q0;
+//     tdag -> q0;
+//     idn -> q0;
+//     sx -> q0;    
+    
+//     // Rotation gates
+//     rx -> q0, 0.312;
+//     ry -> q1, 0.98;
+//     rz -> q2,  0.15;
+//     p  -> q0,  0.15;
+
+//     u -> q0,  0.15;
+//     u -> q0, 0.98, 0.98;
+//     u -> q0,  0.15, 0.98, 0.312;
+
+//     // 2-qubit gates
+//     swap -> q0, q1;
+//     cx -> q2, q1;
+//     cy -> q3, q2;
+//     cz -> q3, q1;
+//     ch -> q0, q5;
+
+//     crx -> q0, q3, 0.15;
+//     cry -> q5, q1, 0.312;
+//     crz -> q0, q0, 0.312;
+    
+//     // // CU3, CU2, CU1
+//     cu -> q0, q1, 0.15, 0.312, 0.312;
+//     cu -> q0, q1, 0.1543, 0.15;
+//     cu -> q0, q1, 0.11543;
+
+//     // // 3-qubit gates
+//     ccx -> q0, q1, q2;
+//     ccy -> q2, q4, q0;
+//     ccz -> q0, q1, q2;
+
+//     c0 = measure -> q0;
+//     c1 = measure -> q1;
+//     c2 = measure -> q2;
+//     c3 = measure -> q3;
+//     c4 = measure -> q4;
+//     c5 = measure -> q5;
+
+
+// }
+
+// // void kernel(){
+// //     qbit q;
+// //     int c;
+// //     prez -> q;
+// //     h -> q;
+
+// //     c = measure -> q;
+// // }
+// // void computeCateBell() {
+// //     qbit q[2];
+// //     int c[2];
+
+// //     // prez -> q[0];
+// //     // prez -> q[1];
+
+// //     h -> q[0]; 
+
+// //     // c[0] = measure -> q[0];
+    
+// //     // if (c[0] == 0)
+// //     //     x -> q[0];
+// //     // else
+// //     //     z -> q[0];
+// //     c[0] = measure -> q[0];
+// //     c[1] = measure -> q[1];
+// // }
+
+
+// // void computeCateBell() {
+// //     qbit q[3];
+// //     int c[3];
+
+// //     // x -> q[0];
+    
+// //     cnot -> q[0], q[1];
+// //     // x -> q[0];
+// //     // x -> q[1]; 
+// //     cnot -> q[0], q[2];
+
+
+// //     c[0] = measure -> q[0];
+// //     c[1] = measure -> q[1];
+// //     c[2] = measure -> q[2];
+
+// // }
+
+// // void kernel0(){
+// //     qbit q[3];
+// //     int res, res1;
+    
+// //     // z -> q0;
+// //     // x -> q1;
+// //     // x -> q2;
+// //     prex -> q[0];
+// //     prez -> q[1];
+
+// //     for (int i = 1; i < 3; i++){
+// //         z -> q[i];
+// //         x -> q[i];
+// //     }
+
+
+// //     // h -> q0;
+    
+// //     res = measureX -> q[0];
+// //     res1 = measure -> q[1];
+    
+// // }
+
+
+// // int kernel(){
+// //     qbit 
+// // }
+
+// // if else 
+// // int kernel1(int basis){
+// //     qbit q0;
+// //     int c;
+// //     h -> q0;
+// //     if (basis == 0){
+// //         x -> q0;
+// //     } else if  (basis == 1){
+// //         z -> q0;
+// //     } else{
+// //         h -> q0;
+// //     }
+// //     c = measure -> q0;
+// //     return c;
+// // }
+
+// // for loop
+// // int kernel2(){
+// //     qbit q0[3];
+  
+// //     for (int s; s < 3; s++){
+// //         h -> q0[s];
+// //     }
+
+// //     return measure -> q0[0];
+// // }
+
+
+// // int kernel3(){
+// //     qbit q[3];
+// //     int res = 0;
+
+// //     // for (int i = 1; i < 3; i++ ){
+// //     //     cnot -> q[0], q[i];
+// //     // }
+
+// //     for (int i = 0; i < 3; i++)
+// //         res += measure -> q[i];
+
+// //     return res;
+// // }

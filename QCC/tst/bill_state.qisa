@@ -1,0 +1,78 @@
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                           #                           #
+#      Quantum Circuit      #      Backend Toplogy      #
+#      ---------------      #      ---------------      #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                           #           0   2           # 
+#  |0>----Z---*----------   #            \ /            # 
+#             |             #             4             # 
+#  |0>--------X-------Mzz   #            / \            # 
+#                           #           6   8           # 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                           #                           #
+#          LLVM IR          #        Programming        #
+#          -------          #        -----------        #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                           #                           #
+#  %1 = alloca q1           #  import pos               #
+#  %2 = alloca q1           #  qregs = post.qregs(2)    #
+#  %3 = alloca i1           #  cregs = pos.cregs(1)     #
+#  %4 = h *q1 %1            #  qc = pos.QC(qregs, cregs)#
+#  %5 = cx0 *q1 %4          #  qc.h(0)                  #
+#  %6 = cx1 *q1 %2          #  qc.cx(0,1)               #
+#  %7 = measure *q1 %6,*i1 %3  qc.measure(1, 0)         #
+#                           #                           #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+
+
+## Data Area
+0x10: 0, 2, 4, 6, 8
+0x38: 0, 4, 2
+
+## Code area
+kernel_func:
+        MOV R0, .data_qb                # Move regsiter value 
+        LD R1, RO
+        QMOV QR0, R1    
+
+        INIT_Z QRO                      # Init |0>
+        
+        Z QR0                          # Apply Z gate
+
+        MOV R0, .data_mxx_cnot
+        LD R1, R0                       # Qbit0   Control qubit
+        LD R2, R0, 8                    # Qbit4   Target qubit
+        LD R3, R0, 16                   # Abit2   Intermittent qubit
+
+        QMOV QR1, R1                    # Copy Qbit ID to QPR Register
+        QMOV QR2, R2
+        QMOV QR3, R3
+
+        INIT_Z QR2                      # Init |0>
+        INIT_Z QR3
+
+        # Perform Surgery CNOT gate 
+        MERGE_MXX QR4, QR2, QR3           
+        SPLIT_MXX QR4                     
+
+        MERGE_MZZ QR4, QR1, QR2
+        SPLIT_MZZ QR4
+
+        CNOT_POST_MXX        QR1, QR2, QR3     
+        # End Perform CNOT gate
+
+        QMOV QR0, 2                     # .data_db[1]
+        MEAUSURE_Z QR0                  # Measure Qubit 0
+
+        FMR R0, 2                       # Load measure value of specified qubit
+        ST .RVAL, RO 
+ 
+
+## symbol table
+.rval: 0x8
+.data_qb: 0x10
+.data_mxx_cnot: 0x38

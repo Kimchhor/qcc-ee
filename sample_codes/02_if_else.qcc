@@ -1,0 +1,16 @@
+
+
+int kernel(int basis){
+    qbit q0;
+    int c;
+    h -> q0;
+    if (basis == 0){
+        x -> q0;
+    } else if  (basis == 1){
+        z -> q0;
+    } else{
+        h -> q0;
+    }
+    c = measure -> q0;
+    return c;
+}

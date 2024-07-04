@@ -1,0 +1,5 @@
+## Data area
+0x8:0,7
+kernel_func:
+## Symbol area
+.data_qb: 0x8

@@ -1,0 +1,11 @@
+
+
+int kernel(int size){
+    qbit q0;
+  
+    for (int s; s < size; s++){
+        h -> q0;
+    }
+
+    return measure -> q0;
+}

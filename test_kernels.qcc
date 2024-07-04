@@ -1,0 +1,157 @@
+void test_cnot_1() {
+
+    qbit q;
+    qbit q1;
+
+    cnot -> q, q1;
+}
+
+void test_cnot_2() {
+
+    qbit q;
+    qbit q1;
+    
+    x -> q;
+    cnot -> q, q1;
+}
+
+void test_cnot_3() {
+
+    qbit q, q1;
+    int c, c1;
+
+    z -> q;
+    cnot -> q, q1;
+
+    c = measureX -> q;
+    c = measure -> q1;    
+}
+
+void test_swap_1() {
+
+    qbit q;
+    qbit q1;
+
+    swap -> q, q1;
+}
+
+void test_swap_2() {
+
+    qbit q;
+    qbit q1;
+    
+    x -> q;
+    swap -> q, q1;
+}
+
+void test_swap_3() {
+
+    qbit q, q1;
+    int c, c1;
+
+    z -> q;
+    swap -> q, q1;
+
+    c = measureX -> q;
+    c = measure -> q1;    
+}
+
+
+void test_if_else_1(int basis) {
+    int q;
+    
+    if (basis == 0)
+        x -> q;
+    h -> q;
+}
+
+void test_if_else_2(int basis) {
+    int q;
+
+    if (basis != 0)
+        x -> q;
+    else
+        z -> q;
+
+    h -> q;
+}
+
+void test_if_else_3(int basis) {
+    int q;
+    if (basis <= 0){
+        x -> q;
+    }else if (basis >= 1){
+        z -> q;
+    }else {
+        z -> q;
+    }
+    h -> q;
+}
+
+void test_for_loop_1() {
+
+    qbit q[3];
+
+    for (int i = 0; i < 3; i++)
+        prez -> q[i];
+}
+
+void test_for_loop_2() {
+
+    qbit q[3];
+
+    for (int i = 1; i < 3; i++)
+        cnot -> q[0], q[i];
+}
+
+void test_for_loop_3(){
+    
+    qbit q[3];
+    int c[3];
+
+    for (int i = 0; i < 3; i++)
+        h -> q[i];
+
+    for (int i = 0; i < 3; i++)
+        c[i] = measure -> q[i];
+}
+
+
+
+void test_while_loop_1() {
+    qbit q[3];
+    int counter = 0;
+    while(counter < 3){
+        prez -> q[3];
+        counter++;
+    }
+}
+
+void test_while_loop_2() {
+    qbit q;
+    h -> q;
+
+    int time = 0;
+    while((measure -> q)==0){
+        time++;
+    }
+}
+
+void test_while_loop_3(){
+    qbit q;
+    h -> q;
+
+    int counter = 5;
+    int zero_counter = 0;
+    int one_counter = 0;
+
+    while(counter > 1){
+        
+        if ((measure -> q) == 0)
+            zero_counter++;
+        else
+            one_counter++;
+        counter--;
+    }
+
+}

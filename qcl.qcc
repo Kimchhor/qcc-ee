@@ -1,0 +1,14 @@
+
+#include <math.h>
+
+void kernel(){
+    qbit q0;
+    qbit q1;
+    int c0;
+    int c1;
+
+    x -> q0;
+    h -> q0;
+    swap -> q0, q1;
+    measure -> c0;
+}

@@ -1,0 +1,9 @@
+add_llvm_component_library(LLVMQISADesc
+  QISAInstPrinter.cpp
+  QISAMCAsmBackend.cpp
+  QISAMCAsmInfo.cpp
+  QISAMCCodeEmitter.cpp
+  QISAMCObjectWriter.cpp
+  QISAMCTargetDesc.cpp
+  QISATargetAsmStreamer.cpp
+  )

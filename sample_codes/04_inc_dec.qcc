@@ -1,0 +1,18 @@
+
+
+int kernel(){
+    qbit q0;
+    int result;
+
+    h -> q0; // Hadamard gate
+
+    result = measure -> q0;
+
+    if (result < 1){
+        result++;
+    }else{
+        result--;
+    }
+    
+    return result;
+}
